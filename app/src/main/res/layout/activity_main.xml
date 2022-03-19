@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6072D6"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/text_title"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@id/layoutMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFF3F3F3"
+        android:padding="10dp"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonOpen"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="@id/layoutMain"
+            app:layout_constraintEnd_toStartOf="@id/numberPickerOne"
+            app:layout_constraintTop_toTopOf="@id/numberPickerOne"
+            app:layout_constraintBottom_toBottomOf="@id/numberPickerOne" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonChange"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="@id/buttonOpen"
+            app:layout_constraintEnd_toEndOf="@id/buttonOpen"
+            app:layout_constraintTop_toBottomOf="@id/buttonOpen" />
+
+        <NumberPicker
+            android:id="@+id/numberPickerOne"
+            android:layout_width="28dp"
+            android:layout_height="120dp"
+            android:background="#FFCFCFCF"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/buttonOpen"
+            app:layout_constraintEnd_toStartOf="@id/numberPickerTwo"
+            app:layout_constraintTop_toTopOf="@id/layoutMain"
+            app:layout_constraintBottom_toBottomOf="@id/layoutMain" />
+
+        <NumberPicker
+            android:id="@+id/numberPickerTwo"
+            android:layout_width="28dp"
+            android:layout_height="120dp"
+            android:background="#FFCFCFCF"
+            app:layout_constraintStart_toEndOf="@id/numberPickerOne"
+            app:layout_constraintEnd_toStartOf="@id/numberPickerThree"
+            app:layout_constraintTop_toTopOf="@id/numberPickerOne" />
+
+        <NumberPicker
+            android:id="@+id/numberPickerThree"
+            android:layout_width="28dp"
+            android:layout_height="120dp"
+            android:background="#FFCFCFCF"
+            app:layout_constraintStart_toEndOf="@id/numberPickerTwo"
+            app:layout_constraintEnd_toEndOf="@id/layoutMain"
+            app:layout_constraintTop_toTopOf="@id/numberPickerOne" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
