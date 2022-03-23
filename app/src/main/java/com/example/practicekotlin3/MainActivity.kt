@@ -60,49 +60,49 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initOpenButton() {
-        buttonOpen.setOnClickListener {
-            if (modeChange) {
+        buttonOpen.setOnClickListener { // 열기 버튼
+            if (modeChange) { // 비밀 번호 변경 버튼이 활성화 되어 있는 경우
                 Toast.makeText(this, "비밀번호 변경 중입니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
-                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
-                val inputPassword = "${numberPickerOne.value}${numberPickerTwo.value}${numberPickerThree.value}"
+                val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE) // SharedPreference 생성
+                val inputPassword = "${numberPickerOne.value}${numberPickerTwo.value}${numberPickerThree.value}" // 사용자 입력 값
 
-                if (passwordPreferences.getString("password", "000").equals(inputPassword)) {
-                    val intent = Intent(this, DiaryActivity:: class.java)
+                if (passwordPreferences.getString("password", "000").equals(inputPassword)) { // 비밀번호가 일치한 경우
+                    val intent = Intent(this, DiaryActivity:: class.java) // DiaryActivity 로 이동
                     startActivity(intent)
                 } else {
-                    showErrorAlert()
+                    showErrorAlert() // 오류 다이얼로그 표시
                 }
             }
         }
     }
 
     private fun initChangeButton() {
-        buttonChange.setOnClickListener {
+        buttonChange.setOnClickListener { // 비밀번호 변경 버튼
 
             val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
             val inputPassword = "${numberPickerOne.value}${numberPickerTwo.value}${numberPickerThree.value}"
 
-            if (modeChange) {
-                passwordPreferences.edit(true) {
+            if (modeChange) { // 비밀번호 변경 모드일 경우
+                passwordPreferences.edit(true) { // 새로운 입력 값으로 비밀번호 설정
                     this.putString("password", inputPassword)
                 }
 
-                modeChange = false
-                buttonChange.setBackgroundColor(Color.BLACK)
+                modeChange = false // 비밀번호 변경 모드 비활성화
+                buttonChange.setBackgroundColor(Color.BLACK) // 비밀번호 변경 버튼 default 색으로 변경
             } else if (passwordPreferences.getString("password", "000").equals(inputPassword)) {
                 Toast.makeText(this, "변경할 비밀번호를 설정해주세요.", Toast.LENGTH_SHORT).show()
 
-                modeChange = true
-                buttonChange.setBackgroundColor(Color.RED)
+                modeChange = true // 비밀번호 변경 모드 활성화
+                buttonChange.setBackgroundColor(Color.RED) // 비밀번호 변경 버튼 적색으로 변경
             } else {
                 showErrorAlert()
             }
         }
     }
 
-    private fun showErrorAlert() {
+    private fun showErrorAlert() { // 오류 알림 다이얼로그
         AlertDialog.Builder(this)
             .setTitle("실패")
             .setMessage("비밀번호가 일치하지 않습니다.")
